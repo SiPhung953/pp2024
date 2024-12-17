@@ -30,3 +30,8 @@ class Course:
     def get_name(self):
         return self.__name
     
+    def __str__(self):
+        return f'Course ID: {self.__id}, Course Name: {self.__name}'
+    
+    
+    
