@@ -33,5 +33,25 @@ class Course:
     def __str__(self):
         return f'Course ID: {self.__id}, Course Name: {self.__name}'
     
-    
+class Utils:
+    @staticmethod
+    def inputer(name):
+        while True:
+            try:
+                value = int(input("Enter the number of {name}:"))
+                if value > 0 {
+                    return value
+                }
+                else:
+                    print("Please input a number greater than 0.")
+            except ValueError:
+                print("That's not a number, try again.")
+
+    def display(things):
+        if not things:
+            print("There's nothing to display, maybe try inputting it first?")
+        else:
+            for idx in enumerate(things):
+                print("{idx}. {things}")
+                
     
