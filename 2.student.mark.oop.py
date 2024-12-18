@@ -125,4 +125,18 @@ class University:
                 except ValueError:
                     print("Invalid input. Enter a number between 0 and 20.")
 
-            
+    # Function to display
+    def display_students(self):
+        if not self.__students:
+            print("No students available.")
+            return
+        for student in self.__students:
+            print(student)
+            marks = student.get_marks()
+            if marks:
+                print("Marks:")
+                for course_id, mark in marks.items():
+                    course_name = next(course.get_name() for course in self.__courses if course.get_id() == course_id)
+                    print(f"  {course_name} ({course_id}): {mark}")
+            else:
+                print("No marks to display")
