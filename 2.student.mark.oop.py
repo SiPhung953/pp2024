@@ -140,3 +140,36 @@ class University:
                     print(f"  {course_name} ({course_id}): {mark}")
             else:
                 print("No marks to display")
+
+def main():
+    university = University()
+
+    # Probably not make 2 layers of options, too lazy
+    while True:
+        print("STUDENT MARK MANAGEMENT PORTAL")
+        print("-----")
+        print("Options")
+        print("1. Input Students Info")
+        print("2. Input Courses Info")
+        print("3. Input Marks")
+        print("4. Display Students")
+        print("5. Exit")
+
+        choice = input("Select your option: ")
+        if choice == "1":
+            university.add_students()
+        elif choice == "2":
+            university.add_courses()
+        elif choice == "3":
+            university.input_marks()
+        elif choice == "4":
+            university.display_students()
+            input("Press Enter to return to the menu...")
+        elif choice == "5":
+            print("Exiting...")
+            break
+        else:
+            print("Invalid choice. Try again.")
+
+if __name__ == "__main__":
+    main()
