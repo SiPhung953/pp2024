@@ -56,12 +56,13 @@ class Utils:
                 print("That's not a number, try again.")
 
     # Display Function
-    def display(things):
+    def display(things, label):
         if not things:
-            print("There's nothing to display, maybe try to input it first?")
+            print(f"There's no {label} to display, maybe try to input it first?")
+            return
         else:
-            for idx in enumerate(things):
-                print("{idx}. {things}")
+            for idx, things in enumerate(things):
+                print(f"{idx + 1}. {things['ID']} - {things['Name']}")
 
 class University:
     # Constructor
@@ -88,5 +89,40 @@ class University:
             course = Courses(course_id, name)
             self.__courses.append(course)
 
+    # Function to input marks
+    def input_marks(self):
+        print("Available Courses: ")
+        Utils.display(self.__courses, "courses")
+        if not self.__course:
+            return
+
+        print("Students: ")
+        Utils.display(self.__students, "students")
+        if not self.__student:
+            return
+        
+        while True:
+            try:
+                course_idx = int(input("Select a course: ")) - 1
+                if 0 <= course_idx < len(self.__courses):
+                    selected_course = self.__courses[course_idx]
+                    break
+                else:
+                    print("Invalid number. Try again.")
+            except ValueError:
+                print("Invalid input. Please enter a valid number.")
+
+        print(f"Enter marks for course: {selected_course.get_name()} (ID: {selected_course.get_id()})")
+        for student in self.__students:
+            while True:
+                try:
+                    mark = float(input(f"Enter mark for {student.get_name()} (ID: {student.get_id()}): "))
+                    if 0 <= mark <= 20:
+                        student.set_mark(selected_course.get_id(), mark)
+                        break
+                    else:
+                        print("Mark must be between 0 and 20.")
+                except ValueError:
+                    print("Invalid input. Enter a number between 0 and 20.")
+
             
-    
