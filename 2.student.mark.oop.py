@@ -21,6 +21,7 @@ class Students:
     # Str method
     def __str__(self):
         return f'Name: {self.__name}, ID: {self.__id}, DoB: {self.__dob}'
+# Encapsulation
         
     
 class Courses:
@@ -63,6 +64,7 @@ class Utils:
         else:
             for idx, things in enumerate(things):
                 print(f"{idx + 1}. {things['ID']} - {things['Name']}")
+# Polymorphism
 
 class University:
     # Constructor
